@@ -5,20 +5,64 @@ class Node {
     this.right = null;
   }
 
-  insert(data) {
+  insert(value) {
     if (value <= this.data) {
       if (!this.left) {
-        this.left = new Node(data);
+        this.left = new Node(value);
       } else {
-        this.left.insert(data);
+        this.left.insert(value);
       }
     } else {
       if (!this.right) {
-        this.right = new Node(data);
+        this.right = new Node(value);
       } else {
-        this.right.insert(data);
+        this.right.insert(value);
       }
     }
+  }
+
+  printInOrder() {
+    // Print left nodes in order
+    if (this.left) {
+      this.left.printInOrder();
+    }
+    // print current node
+    console.log(this.data);
+
+    // print right nodes in order
+    if (this.right) {
+      this.right.printInOrder();
+    }
+  }
+
+  printPreOrder() {
+    // print current node
+    console.log(this.data);
+
+    // Print left nodes in order
+    if (this.left) {
+      this.left.printInOrder();
+    }
+
+    // print right nodes in order
+    if (this.right) {
+      this.right.printInOrder();
+    }
+  }
+
+  printPostOrder() {
+    // Print left nodes in order
+    if (this.left) {
+      this.left.printInOrder();
+    }
+
+    // print right nodes in order
+    if (this.right) {
+      this.right.printInOrder();
+    }
+
+    // print current node
+    console.log(this.data);
   }
 
   contains(value) {
@@ -43,4 +87,4 @@ class Node {
   }
 }
 
-module.exports = { Node };
+module.exports = Node;
