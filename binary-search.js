@@ -35,4 +35,23 @@ function binarySearchRecursive(arr, targetElement, left = 0, right = arr.length)
   }
 }
 
+function indexEqualsValueSearch(arr) {
+  // your code goes here
+
+  let start = 0;
+  let end = arr.length - 1;
+  while (start <= end) {
+    let middle = Math.round((start + end) / 2);
+
+    if (arr[middle] - middle < 0) {
+      start = ++middle;
+    } else if (arr[middle] - middle === 0 && (middle === 0 || arr[middle - 1] - (middle - 1) < 0)) {
+      return middle;
+    } else {
+      end = --middle;
+    }
+  }
+  return -1;
+}
+
 module.exports = { binarySearchIterative, binarySearchRecursive };

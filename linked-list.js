@@ -20,7 +20,7 @@ class LinkedList {
       return;
     }
 
-    let current = head;
+    let current = this.head;
 
     // traverse list until you get to the end
     while (current.next) {
@@ -62,6 +62,40 @@ class LinkedList {
       }
       current = current.next;
     }
+  }
+
+  print() {
+    let current = this.head;
+    while (current.next) {
+      console.log(current.data);
+
+      current = current.next;
+    }
+
+    console.log(current.data);
+  }
+
+  reverse() {
+    // const reverseLinkedList = new LinkedList();
+    let current = this.head;
+    let previous = null;
+    let tmp = null;
+
+    while (current) {
+      // hold the next value in memory
+      tmp = current.next;
+
+      // set the next to be the previous value, or null if this is the head of the linked list
+      current.next = previous;
+
+      // hold the current value in memory for next iteration
+      previous = current;
+
+      // update the current value
+      current = tmp;
+    }
+
+    this.head = previous;
   }
 }
 
